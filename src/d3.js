@@ -10,10 +10,12 @@ import * as array from 'd3-array';
 import * as scale from 'd3-scale';
 import * as selection from 'd3-selection';
 import * as collection from 'd3-collection';
+import * as transition from 'd3-transition';
 
 export default Object.assign({},
   array,
   scale,
   selection,
   collection,
+  transition,
 );

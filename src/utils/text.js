@@ -29,8 +29,7 @@ export function sentenceLengths(text) {
 export function findPositions(data, lengthAttribute = "length", turn = -Math.PI / 2.0) {
   const one = Complex(0,1)
   let currentTurn = turn
-  let currentPos = Complex(0,0);
-  console.log(currentPos)
+  let currentPos = Complex.ZERO;
   let currentX = 0
   let currentY = 0
 
@@ -43,14 +42,13 @@ export function findPositions(data, lengthAttribute = "length", turn = -Math.PI 
     const imgExp = Complex.exp(mult)
     d.move = Complex(d[lengthAttribute],0).mult(imgExp)
     currentPos = currentPos.add(d.move)
-    d.pos = currentPos
-    d.x2 = Math.round(d.pos.r)
-    d.y2 = Math.round(d.pos.i)
-    d.x1 = currentX
-    d.y1 = currentY
-    currentX = d.x2
-    currentY = d.y2
-
+    d.pos = currentPos;
+    d.x2 = Math.round(d.pos.r);
+    d.y2 = Math.round(d.pos.i);
+    d.x1 = currentX;
+    d.y1 = currentY;
+    currentX = d.x2;
+    currentY = d.y2;
   });
 
   return data;

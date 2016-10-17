@@ -11,22 +11,15 @@ function computeProps(props) {
   const x2Extent = d3.extent(data, (d) => d.x2);
 
   const xScale = d3.scaleLinear()
-    .domain([0, 10])
+    .domain([Math.min(x1Extent[0],x2Extent[0]), Math.max(x1Extent[1], x2Extent[1])])
     .range([0, width]);
-
-  xScale
-    .domain([Math.min(x1Extent[0],x2Extent[0]), Math.max(x1Extent[1], x2Extent[1])]);
-
 
   const y1Extent = d3.extent(data, (d) => d.y1);
   const y2Extent = d3.extent(data, (d) => d.y2);
 
   const yScale = d3.scaleLinear()
-    .domain([0, 10])
+    .domain([Math.min(y1Extent[0],y2Extent[0]), Math.max(y1Extent[1], y2Extent[1])])
     .range([height, 0]);
-
-  yScale
-    .domain([Math.min(y1Extent[0],y2Extent[0]), Math.max(y1Extent[1], y2Extent[1])]);
 
   const margin = {
     left: 20,
@@ -90,14 +83,24 @@ class TextLine extends Component {
 
     console.log(data)
 
-    this.lines.selectAll(".line")
-      .data(data).enter()
+    const lines = this.lines.selectAll(".line")
+      .data(data, (d) => d.sentence);
+
+    const linesE = lines.enter()
       .append("path")
       .attr("class", "line")
       .attr("stroke", color)
+      .attr('stroke-opacity', 0.0)
       .attr("stroke-width", 3)
       .attr("stroke-linecap", "round")
-      .attr("d", (d) => `M${xScale(d.x1)},${yScale(d.y1)}L${xScale(d.x2)},${yScale(d.y2)}`)
+      .attr("d", (d) => `M${xScale(d.x1)},${yScale(d.y1)}L${xScale(d.x2)},${yScale(d.y2)}`);
+
+    linesE.transition()
+      .duration(500)
+      .delay((d,i) => i * 20)
+      .attr('stroke-opacity', 1.0)
+
+    this.lines.exit().remove();
   }
 
   render() {

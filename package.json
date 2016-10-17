@@ -11,10 +11,12 @@
     "d3-collection": "^1.0.1",
     "d3-scale": "^1.0.3",
     "d3-selection": "^1.0.2",
+    "d3-transition": "^1.0.2",
     "react": "^15.3.2",
     "react-computed-props": "^0.1.1",
     "react-dom": "^15.3.2",
-    "react-dropzone": "^3.6.0"
+    "react-dropzone": "^3.6.0",
+    "save-svg-as-png": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
