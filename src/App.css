@@ -37,4 +37,5 @@ nav {
     margin-right:5%;
     margin-left:5%;
     margin-top:10px;
+    white-space: pre-wrap;
 }
