@@ -9,7 +9,7 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {content: "hello. world."};
+        this.state = {content: ""};
 
         this.loadText = this.loadText.bind(this);
     }
@@ -18,20 +18,28 @@ class App extends Component {
     }
     render() {
       const { content } = this.state;
-
-      const data = sentenceLengths(content);
-      const convertedData = findPositions(data)
+      let data = [];
+      let convertedData = [];
+      if(content) {
+          data = sentenceLengths(content);
+          convertedData = findPositions(data)      
+      }
 
         return (
             <div className="App">
                 <nav>Text-Art</nav>
-                <TextDrop onLoad={this.loadText}/>                
-                <TextLine data={convertedData} />
-                <TextShape
-                    duration={1000}
-                    width={600}
-                    height={600}
-                    text={this.state !== null ? this.state.content : ''}/>
+                <div className="container">
+                    <TextDrop onLoad={this.loadText}/>
+                    <TextShape
+                        duration={1000}
+                        width={(window.innerWidth * .8)/2}
+                        height={window.innerHeight/2}
+                        text={this.state !== null ? this.state.content : ''}/>
+                    <TextLine className="TextLineWrapper"
+                        width={(window.innerWidth * .8)/2}
+                        height={window.innerHeight/2}
+                        data={convertedData} />
+                </div>
             </div>
         );
     }

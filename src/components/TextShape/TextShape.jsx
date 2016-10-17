@@ -16,13 +16,11 @@ var TextBar = React.createClass({
 
     // Bind initial g element
     setUp () {
-        console.log('set up!')
         this.g = d3.select(this.root).append("g");
     },
 
     // Update on new props
     componentWillReceiveProps (props){
-        console.log("new shape props! ", props.text)
         this.processText(props.text);
         this.update();
     },
@@ -43,6 +41,7 @@ var TextBar = React.createClass({
                     .attr('width', 0)
                     .attr("y", (d, i) => { return yScale(i); })
                     .attr('height', yScale.bandwidth())
+                    .attr('fill', '#26a69a')
                     // Merge in updating elements
                     .merge(bars)
                     .transition()
@@ -66,9 +65,9 @@ var TextBar = React.createClass({
     },
     render: function () {
       return (
-          <div>
-              <svg width={500}
-                   height={500}
+          <div className="TextShape">
+              <svg width={this.props.width}
+                   height={this.props.height}
                    ref={(node) => { this.root = node; }} />
           </div>
       );

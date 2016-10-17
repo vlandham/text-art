@@ -19,16 +19,14 @@ nav {
 
 .dropzone {
     text-align:center;
-    height: 200px;
+    height: 100px;
     border-width: 1px;
     border-color: #d3d3d3;
     border-style: solid;
     border-radius: 10px;
-    margin-right:5%;
-    margin-left:5%;
 }
 .dropzone > div {
-    padding-top:88px;
+    padding-top:48px;
     opacity:.5;
     font-variant:all-caps;
 }
@@ -38,4 +36,14 @@ nav {
     margin-left:5%;
     margin-top:10px;
     white-space: pre-wrap;
+}
+
+.container {
+    width:90%;
+    margin-right:5%;
+    margin-left:5%;
+}
+
+.TextShape, .TextLine {
+    display:inline-block;
 }
