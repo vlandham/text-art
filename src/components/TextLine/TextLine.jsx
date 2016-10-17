@@ -44,12 +44,14 @@ class TextLine extends Component {
     margin: PropTypes.object,
     height: PropTypes.number,
     width: PropTypes.number,
+    duration:PropTypes.number
   }
 
   static defaultProps = {
     width: 800,
     height: 800,
-    color: 'tomato',
+    color: '#ba68c8',
+    duration:1000
   }
 
   /**
@@ -82,7 +84,6 @@ class TextLine extends Component {
   update() {
     const { data, color, xScale, yScale } = this.props;
 
-    console.log(data)
 
     const lines = this.lines.selectAll(".line")
       .data(data, (d) => d.sentence);
@@ -98,10 +99,12 @@ class TextLine extends Component {
 
     linesE.transition()
       .duration(500)
-      .delay((d,i) => i * 20)
+      .delay((d,i) => {
+          return i * (this.props.duration / data.length)
+      })
       .attr('stroke-opacity', 1.0)
 
-    this.lines.exit().remove();
+    lines.exit().remove();
   }
 
   render() {
