@@ -37,12 +37,20 @@ class App extends Component {
                         width={(window.innerWidth * .8)/2}
                         height={window.innerHeight/2}
                         text={this.state !== null ? this.state.content : ''}/>
-                    <ExportControls chartId="text-shape" filename="text-shape"/>
                     <TextLine className="TextLineWrapper"
+                        id="text-line"
                         width={(window.innerWidth * .8)/2}
                         height={window.innerHeight/2}
                         data={convertedData} />
-                    <ExportControls chartId="text-line" filename="text-line"/>
+                    <div className="exports">
+                      <div className="left">
+                      <ExportControls chartId="text-shape" filename="text-shape"/>
+                      </div>
+                      <div className="right">
+                      <ExportControls chartId="text-line" filename="text-line"/>
+                      </div>
+                    </div>
+
                 </div>
             </div>
         );

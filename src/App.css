@@ -48,3 +48,12 @@ nav {
 .TextShape, .TextLine {
     display:inline-block;
 }
+
+
+.left {
+  width: 50%;
+}
+.right {
+  width:50%;
+  float:right;
+}
