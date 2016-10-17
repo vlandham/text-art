@@ -38,6 +38,7 @@ function computeProps(props) {
 class TextLine extends Component {
 
   static propTypes = {
+    id: PropTypes.string,
     color: PropTypes.string,
     data: PropTypes.array,
     margin: PropTypes.object,
@@ -104,10 +105,11 @@ class TextLine extends Component {
   }
 
   render() {
-    const { width, height, margin } = this.props;
+    const { width, height, margin, id } = this.props;
     return (
       <div className='TextLine'>
         <svg
+          id={id}
           ref={(node) => { this.root = node; }}
           height={height + margin.top + margin.bottom}
           width={width + margin.left + margin.right}

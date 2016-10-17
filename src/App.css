@@ -1,4 +1,10 @@
 /* Inspired by materialize.css */
+
+.App {
+  width: 1200px;
+  margin: auto;
+}
+
 nav {
     background-color: #ee6e73;
     top: 0px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as d3 from "d3";
+import d3 from '../../d3';
 
 // Text drop element, uses dropzone
 var TextBar = React.createClass({
@@ -65,10 +65,12 @@ var TextBar = React.createClass({
         this.data = data;
     },
     render: function () {
+      const { id } = this.props;
       return (
           <div>
               <svg width={500}
                    height={500}
+                   id={id}
                    ref={(node) => { this.root = node; }} />
           </div>
       );
